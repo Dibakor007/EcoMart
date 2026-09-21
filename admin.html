@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard & Operations — EcoMart</title>
+    <meta name="description" content="Manage customer orders, update delivery statuses, view revenue statistics, and inspect product catalog." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  '#f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- Sticky Header Navigation -->
+    <nav class="header-glass sticky top-0 z-50 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-md">
+              ⚡
+            </div>
+            <div>
+              <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-amber-700">Admin</span></span>
+              <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase leading-none">Store Control Dashboard</p>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-3">
+            <a href="/" class="btn-secondary text-xs py-2 px-3">
+              ← Return to Main Store
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Admin Dashboard View -->
+    <main id="admin-dashboard-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full space-y-8">
+      
+      <div>
+        <h1 class="text-3xl font-extrabold text-[#1b3b2b] tracking-tight">EcoMart Control Dashboard</h1>
+        <p class="text-sm text-slate-600 mt-1">Real-time marketplace revenue overview, order processing, and user directory.</p>
+      </div>
+
+      <!-- KPI Statistics Cards Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+          <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Total Marketplace Revenue</span>
+          <span id="stat-total-revenue" class="text-3xl font-black text-[#1b3b2b] mt-2 block">৳0</span>
+          <span class="text-[11px] text-emerald-700 font-semibold mt-1 inline-block">🌱 Verified Carbon Neutral Sales</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+          <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Total Customer Orders</span>
+          <span id="stat-total-orders" class="text-3xl font-black text-[#1b3b2b] mt-2 block">0</span>
+          <span class="text-[11px] text-blue-700 font-semibold mt-1 inline-block">📦 Active Fulfillment Pipeline</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+          <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Registered Eco Shoppers</span>
+          <span id="stat-total-users" class="text-3xl font-black text-[#1b3b2b] mt-2 block">0</span>
+          <span class="text-[11px] text-purple-700 font-semibold mt-1 inline-block">👤 Active User Accounts</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+          <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Active Products Catalog</span>
+          <span id="stat-total-products" class="text-3xl font-black text-[#1b3b2b] mt-2 block">16</span>
+          <span class="text-[11px] text-amber-700 font-semibold mt-1 inline-block">🌿 100% Plastic-Free Certified</span>
+        </div>
+
+      </div>
+
+      <!-- Orders Management Table Card -->
+      <div class="eco-card p-6 bg-white border border-[#e8e5de] overflow-hidden">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="font-extrabold text-[#1b3b2b] text-lg">Customer Orders Management</h3>
+            <p class="text-xs text-slate-500">Update fulfillment and delivery statuses in real-time or view full order details.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
+                <th class="p-4">Order ID</th>
+                <th class="p-4">Date</th>
+                <th class="p-4">Customer</th>
+                <th class="p-4">Amount</th>
+                <th class="p-4">Current Status</th>
+                <th class="p-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-table-body">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Product Management Table Card -->
+      <div class="eco-card p-6 bg-white border border-[#e8e5de] overflow-hidden">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="font-extrabold text-[#1b3b2b] text-lg">Product Catalog & Eco Impact</h3>
+            <p class="text-xs text-slate-500">Manage products, stock levels, and sustainability data.</p>
+          </div>
+          <button onclick="openProductModal()" class="btn-primary py-2 px-4 text-xs">
+            + Add New Product
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
+                <th class="p-4">Product Name</th>
+                <th class="p-4">Category</th>
+                <th class="p-4">Price</th>
+                <th class="p-4">Stock</th>
+                <th class="p-4">Eco Score</th>
+                <th class="p-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-table-body">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reviews Management Table Card -->
+      <div class="eco-card p-6 bg-white border border-[#e8e5de] overflow-hidden">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="font-extrabold text-[#1b3b2b] text-lg">Customer Reviews Moderation</h3>
+            <p class="text-xs text-slate-500">Monitor and moderate product reviews across the marketplace.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
+                <th class="p-4">Date</th>
+                <th class="p-4">Reviewer</th>
+                <th class="p-4">Rating</th>
+                <th class="p-4">Comment</th>
+                <th class="p-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-reviews-table-body">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Users Directory Table Card -->
+      <div class="eco-card p-6 bg-white border border-[#e8e5de] overflow-hidden">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="font-extrabold text-[#1b3b2b] text-lg">Registered Users Directory</h3>
+            <p class="text-xs text-slate-500">Overview of active shoppers and reward point balances.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
+                <th class="p-4">User Name</th>
+                <th class="p-4">Email</th>
+                <th class="p-4">Role</th>
+                <th class="p-4">Eco Reward Points</th>
+                <th class="p-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-table-body">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Add / Edit Product Modal -->
+      <div id="product-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+          <div class="p-6 border-b border-[#e8e5de] flex justify-between items-center bg-slate-50">
+            <h3 id="product-modal-title" class="font-extrabold text-xl text-[#1b3b2b]">Add New Product</h3>
+            <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
+            <form id="product-form" class="space-y-6">
+              <input type="hidden" id="product-id" />
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Basic Info -->
+                <div class="space-y-4">
+                  <h4 class="font-bold text-sm text-slate-500 uppercase tracking-wide border-b pb-2">Basic Information</h4>
+                  
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Product Name</label>
+                    <input type="text" id="product-name" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm" />
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Price (৳)</label>
+                      <input type="number" id="product-price" required min="0" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Stock Level</label>
+                      <input type="number" id="product-stock" required min="0" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Category</label>
+                    <input type="text" id="product-category" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm" placeholder="e.g. Kitchen, Home, Electronics" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                    <input type="url" id="product-image" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm" placeholder="https://..." />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">General Description</label>
+                    <textarea id="product-description" required rows="3" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Eco Impact -->
+                <div class="space-y-4">
+                  <h4 class="font-bold text-sm text-emerald-600 uppercase tracking-wide border-b border-emerald-100 pb-2">Eco Impact Metrics</h4>
+                  
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Eco Score (0-100)</label>
+                      <input type="number" id="product-eco-score" required min="0" max="100" class="w-full px-4 py-2 border border-emerald-200 bg-emerald-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Plastic Saved (g)</label>
+                      <input type="number" id="product-plastic-saved" required min="0" class="w-full px-4 py-2 border border-emerald-200 bg-emerald-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Material Composition</label>
+                    <input type="text" id="product-material" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" placeholder="e.g. 100% Bamboo" />
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Reusable?</label>
+                      <input type="text" id="product-reusable" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" placeholder="Yes / No" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-slate-700 mb-1">Recyclable?</label>
+                      <input type="text" id="product-recyclable" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" placeholder="Yes / Home Compostable" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Packaging Type</label>
+                    <input type="text" id="product-packaging" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" placeholder="e.g. Recyclable Paper Pouch" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Plastic Reduction Estimate</label>
+                    <input type="text" id="product-plastic-reduction" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm" placeholder="e.g. ~2.5 kg/year" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Sustainability Description</label>
+                    <textarea id="product-sustainability" rows="3" class="w-full px-4 py-2 border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="p-6 border-t border-[#e8e5de] flex justify-end gap-3 bg-slate-50">
+            <button onclick="closeProductModal()" class="px-5 py-2.5 rounded-xl font-bold text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 transition-colors">Cancel</button>
+            <button onclick="submitProductForm()" class="btn-primary py-2.5 px-6">Save Product Data</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Details Modal -->
+      <div id="order-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onclick="closeOrderModal()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+          <div class="p-6 border-b border-[#e8e5de] flex justify-between items-center bg-slate-50">
+            <div>
+              <h3 id="order-modal-title" class="font-extrabold text-xl text-[#1b3b2b]">Order Details</h3>
+              <p id="order-modal-subtitle" class="text-xs text-slate-500 mt-0.5"></p>
+            </div>
+            <button onclick="closeOrderModal()" class="text-slate-400 hover:text-slate-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <div id="order-modal-body" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-6">
+            <!-- Dynamically populated via admin.js -->
+          </div>
+          <div class="p-6 border-t border-[#e8e5de] flex justify-between items-center bg-slate-50">
+            <div id="order-modal-status-updater" class="flex items-center gap-2">
+              <!-- Dynamically populated status update select -->
+            </div>
+            <button onclick="closeOrderModal()" class="px-5 py-2.5 rounded-xl font-bold text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 transition-colors text-xs">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Profile Modal -->
+      <div id="user-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onclick="closeUserModal()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col">
+          <div class="p-6 border-b border-[#e8e5de] flex justify-between items-center bg-slate-50">
+            <h3 class="font-extrabold text-xl text-[#1b3b2b]">User Profile Details</h3>
+            <button onclick="closeUserModal()" class="text-slate-400 hover:text-slate-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <div id="user-modal-body" class="p-6 space-y-4">
+            <!-- Dynamically populated via admin.js -->
+          </div>
+          <div class="p-6 border-t border-[#e8e5de] flex justify-end bg-slate-50">
+            <button onclick="closeUserModal()" class="btn-primary py-2 px-5 text-xs">Done</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-900 mt-16">
+      <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+        <p>&copy; 2026 EcoMart Administrator Portal.</p>
+      </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/nav-auth.js"></script>
+    <script src="/frontend/js/admin.js"></script>
+  </body>
+</html>

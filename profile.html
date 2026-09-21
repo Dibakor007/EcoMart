@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eco Impact Profile & Dashboard — EcoMart</title>
+    <meta name="description" content="View your cumulative plastic savings, carbon offsets, eco badges, and order history." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  #f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- Sticky Header Navigation -->
+    <nav class="header-glass sticky top-0 z-50 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center shadow-md group-hover:bg-[#1b3b2b] transition">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-[#3a7253]">Mart</span></span>
+              <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase leading-none">Shop Better. Live Greener.</p>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <a href="/" class="hover:text-[#2d5a40] transition">Home</a>
+            <a href="/products.html" class="hover:text-[#2d5a40] transition">Shop Catalog</a>
+            <a href="/wishlist.html" class="hover:text-[#2d5a40] transition">Wishlist</a>
+            <a href="/orders.html" class="hover:text-[#2d5a40] transition">My Orders</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="logout-btn" class="btn-secondary text-xs py-2 px-3 hover:border-red-300 hover:text-red-700">
+              Sign Out
+            </button>
+            <a href="/checkout.html" class="relative btn-primary py-2 px-3.5 bg-[#1b3b2b] flex items-center gap-2">
+              <span class="font-bold text-xs uppercase">Cart</span>
+              <span id="cart-badge" class="bg-emerald-500 text-slate-950 text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full ml-0.5">0</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Profile View -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+      
+      <!-- User Profile Header Card -->
+      <div class="eco-card p-8 bg-white border border-[#e8e5de] mb-8">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <div id="user-avatar" class="w-20 h-20 rounded-2xl bg-[#2d5a40] text-white flex items-center justify-center text-3xl font-black shadow-lg flex-shrink-0">
+            U
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-center sm:justify-start gap-2">
+              <h1 id="user-name" class="text-2xl font-extrabold text-[#1b3b2b] tracking-tight">Eco Champion</h1>
+              <span class="badge-eco-score">🌱 Verified Eco Member</span>
+            </div>
+            <p id="user-email" class="text-sm text-slate-500 font-medium">user@ecomart.org</p>
+            <p class="text-xs text-emerald-700 font-semibold pt-1">Member since 2026 • Carbon-neutral offset enabled</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eco Impact Statistics Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        
+        <div class="eco-card p-6 bg-white border border-[#e8e5de] text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-[#eef4f0] text-[#2d5a40] flex items-center justify-center font-bold mb-2">⭐</div>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Eco Reward Points</span>
+          <span id="eco-points" class="text-2xl font-black text-[#1b3b2b] mt-1 block">450</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de] text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-[#eef4f0] text-[#2d5a40] flex items-center justify-center font-bold mb-2">🛍️</div>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Plastic Saved</span>
+          <span id="plastic-saved" class="text-2xl font-black text-[#1b3b2b] mt-1 block">3.4 kg</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de] text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-[#eef4f0] text-[#2d5a40] flex items-center justify-center font-bold mb-2">♻️</div>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Waste Diverted</span>
+          <span id="waste-reduced" class="text-2xl font-black text-[#1b3b2b] mt-1 block">8.2 kg</span>
+        </div>
+
+        <div class="eco-card p-6 bg-white border border-[#e8e5de] text-center">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-[#eef4f0] text-[#2d5a40] flex items-center justify-center font-bold mb-2">🌳</div>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">CO2 Emissions Reduced</span>
+          <span id="co2-reduced" class="text-2xl font-black text-[#1b3b2b] mt-1 block">14.5 kg</span>
+        </div>
+
+      </div>
+
+      <!-- Badges & History Grid -->
+      <div class="grid lg:grid-cols-12 gap-8">
+        
+        <!-- Badges Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+            <h3 class="font-extrabold text-[#1b3b2b] text-base mb-4">Earned Sustainability Badges</h3>
+            <div id="badges-container" class="grid grid-cols-2 gap-3">
+              <!-- Dynamically populated via profile.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Preview Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="eco-card p-6 bg-white border border-[#e8e5de]">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-extrabold text-[#1b3b2b] text-base">Recent Orders Overview</h3>
+              <a href="/orders.html" class="text-xs font-bold text-[#2d5a40] hover:underline">View Full History →</a>
+            </div>
+            <div id="recent-orders-container" class="space-y-3">
+              <!-- Dynamically populated via profile.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 EcoMart. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/wishlist.js"></script>
+    <script src="/frontend/js/nav-auth.js"></script>
+    <script src="/frontend/js/profile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoMart — Shop Better. Live Greener.</title>
+    <meta name="description" content="EcoMart is Bangladesh's premier certified sustainable e-commerce marketplace offering zero plastic household products with verified lifecycle carbon impact scores." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  #f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- 1. Top Announcement Bar -->
+    <aside class="bg-[#1b3b2b] text-[#eef4f0] text-xs py-2.5 px-4 border-b border-[#254d37]">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="font-medium">Free Carbon-Neutral Delivery on orders over ৳1,500</span>
+          <span class="hidden md:inline text-slate-300">• 100% Certified Plastic-Free Packaging</span>
+        </div>
+        <div class="flex items-center gap-4 text-[11px] font-semibold text-slate-300">
+          <a href="#impact" class="hover:text-white transition">Our Carbon Impact</a>
+          <span>|</span>
+          <a href="/orders.html" class="hover:text-white transition">Track Order</a>
+          <span>|</span>
+          <a href="/wishlist.html" class="hover:text-white transition flex items-center gap-1">
+            <span>Wishlist</span>
+            <span class="wishlist-badge bg-rose-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full hidden">0</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 2. Sticky Header Navigation -->
+    <nav class="header-glass sticky top-0 z-50 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center shadow-md group-hover:bg-[#1b3b2b] transition">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-[#3a7253]">Mart</span></span>
+              <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase leading-none">Shop Better. Live Greener.</p>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <a href="/" class="text-[#2d5a40] font-extrabold border-b-2 border-[#2d5a40] pb-1">Home</a>
+            <a href="/products.html" class="hover:text-[#2d5a40] transition">Shop Catalog</a>
+            <a href="#eco-impact-showcase" class="hover:text-[#2d5a40] transition">Eco Impact</a>
+            <a href="#categories" class="hover:text-[#2d5a40] transition">Categories</a>
+            <a href="/orders.html" class="hover:text-[#2d5a40] transition">My Orders</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="/products.html" class="p-2 text-slate-600 hover:text-[#2d5a40] hover:bg-[#eef4f0] rounded-lg transition" title="Search Products">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </a>
+
+            <a href="/wishlist.html" class="p-2 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition relative" title="Saved Wishlist">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span class="wishlist-badge absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-extrabold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+            </a>
+
+            <div id="nav-auth-container" class="flex items-center gap-2">
+              <a href="/login.html" class="text-slate-700 hover:text-[#2d5a40] font-bold text-xs uppercase tracking-wider px-3 py-2 transition">Login</a>
+              <a href="/register.html" class="btn-primary py-2 px-4 text-xs">Sign Up</a>
+            </div>
+
+            <a href="/checkout.html" class="relative btn-primary py-2 px-3.5 bg-[#1b3b2b] hover:bg-[#112419] flex items-center gap-2" title="Shopping Cart">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <span class="hidden sm:inline font-bold text-xs uppercase">Cart</span>
+              <span id="cart-badge" class="bg-emerald-500 text-slate-950 text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full ml-0.5">0</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- 3. Hero Section -->
+    <section class="relative bg-gradient-to-b from-[#eef4f0]/60 to-[#fcfbf7] pt-12 pb-20 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 bg-[#eef4f0] border border-[#bcdbca] px-3.5 py-1.5 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-[#2d5a40]"></span>
+              <span class="text-xs font-extrabold text-[#1b3b2b] uppercase tracking-wider">Certified Sustainable E-Commerce Marketplace</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1b3b2b] tracking-tight leading-[1.15]">
+              Shop Better.<br><span class="text-[#2d5a40]">Live Greener.</span>
+            </h1>
+            
+            <p class="text-base sm:text-lg text-slate-600 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Discover audited, plastic-free products with transparent environmental lifecycle scores powered by MongoDB.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="/products.html" class="btn-primary text-base py-3.5 px-7 shadow-md w-full sm:w-auto">
+                <span>Explore Catalog</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a href="#eco-impact-showcase" class="btn-secondary text-base py-3.5 px-7 w-full sm:w-auto">
+                <span>Inspect Eco Scorecard</span>
+              </a>
+            </div>
+
+            <div class="pt-8 border-t border-[#e8e5de]/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+              <div class="text-center lg:text-left">
+                <span class="block text-2xl font-black text-[#1b3b2b]">100%</span>
+                <span class="text-xs text-slate-500 font-medium">Plastic-Free Packaging</span>
+              </div>
+              <div class="text-center lg:text-left">
+                <span class="block text-2xl font-black text-[#1b3b2b]">50k+ kg</span>
+                <span class="text-xs text-slate-500 font-medium">CO2 Offset Total</span>
+              </div>
+              <div class="text-center lg:text-left">
+                <span class="block text-2xl font-black text-[#1b3b2b]">10,000+</span>
+                <span class="text-xs text-slate-500 font-medium">Happy Green Shoppers</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+              <img src="/images/products/product-1.jpg" alt="Sustainable Living Products" class="w-full h-[420px] object-cover hover:scale-105 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                <div class="text-white">
+                  <span class="badge-eco-score mb-2">🌱 Eco Score 98/100</span>
+                  <h3 class="text-xl font-bold">Plastic-Free Everyday Essentials</h3>
+                  <p class="text-xs text-slate-200 mt-1">Hand-curated for modern eco-conscious homes in Bangladesh.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Signature Eco Impact Showcase Section -->
+    <section id="eco-impact-showcase" class="py-16 bg-[#f5f9f6] border-y border-[#bcdbca]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="badge-eco-score mb-2">🌱 Signature Marketplace Feature</span>
+          <h2 class="text-3xl font-extrabold text-[#1b3b2b] tracking-tight">Dynamic Eco Impact System</h2>
+          <p class="text-sm text-slate-600 mt-2">Every item on EcoMart is audited across 7 dynamic sustainability attributes stored in MongoDB.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Selector Column -->
+          <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <h3 class="font-extrabold text-[#1b3b2b] text-sm uppercase tracking-wider mb-2">Select Item to Inspect Data:</h3>
+            <div id="eco-showcase-selector" class="space-y-2">
+              <!-- Dynamically populated from API -->
+            </div>
+          </div>
+
+          <!-- Scorecard Showcase Column -->
+          <div class="lg:col-span-7">
+            <div id="eco-showcase-card" class="bg-white border-2 border-[#bcdbca] p-8 rounded-3xl shadow-xl space-y-6">
+              <!-- Dynamically populated from API -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Featured Products Section -->
+    <section id="featured-products" class="py-16 bg-white border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#2d5a40]">High Eco Score Favorites</span>
+            <h2 class="text-3xl font-extrabold text-[#1b3b2b] tracking-tight mt-1">Featured Sustainable Products</h2>
+          </div>
+          <a href="/products.html" class="btn-secondary text-xs py-2 px-4">View All Products →</a>
+        </div>
+
+        <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Dynamically populated via backend API -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 EcoMart. Shop Better. Live Greener.</p>
+      </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/wishlist.js"></script>
+    <script src="/frontend/js/nav-auth.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        let products = [];
+        try {
+          const res = await fetch('/api/products');
+          if (res.ok) {
+            const json = await res.json();
+            if (json.success && Array.isArray(json.data)) {
+              products = json.data;
+            }
+          }
+        } catch (e) {}
+
+        if (products.length === 0 && window.ecoCart?.fallbackProductMap) {
+          products = Object.values(window.ecoCart.fallbackProductMap);
+        }
+
+        // Render Homepage Eco Impact Showcase
+        const selectorContainer = document.getElementById('eco-showcase-selector');
+        const showcaseCard = document.getElementById('eco-showcase-card');
+
+        if (selectorContainer && showcaseCard && products.length > 0) {
+          selectorContainer.innerHTML = products.slice(0, 6).map((p, idx) => `
+            <button onclick="renderShowcaseCard(${p.id})" class="w-full text-left p-3 rounded-xl border transition flex items-center justify-between group ${idx === 0 ? 'bg-[#eef4f0] border-[#2d5a40]' : 'bg-slate-50 border-slate-200 hover:bg-[#eef4f0]/50'}">
+              <div class="flex items-center gap-3">
+                <img src="${p.image_url}" class="w-10 h-10 rounded-lg object-cover">
+                <div>
+                  <h4 class="font-bold text-xs text-slate-900 group-hover:text-[#2d5a40]">${p.name}</h4>
+                  <span class="text-[10px] text-slate-500 font-semibold">${p.category || 'Sustainable'}</span>
+                </div>
+              </div>
+              <span class="badge-eco-score text-[10px]">🌱 ${p.eco_score || 95}</span>
+            </button>
+          `).join('');
+
+          window.renderShowcaseCard = (pid) => {
+            const item = products.find(x => x.id === pid) || products[0];
+            showcaseCard.innerHTML = `
+              <div class="flex justify-between items-center border-b border-[#bcdbca] pb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center font-bold text-lg">🌱</div>
+                  <div>
+                    <h3 class="font-black text-[#1b3b2b] text-xl tracking-tight">ECO IMPACT</h3>
+                    <p class="text-xs font-bold text-slate-500">${item.name}</p>
+                  </div>
+                </div>
+                <div class="text-right bg-[#eef4f0] px-4 py-2 rounded-xl border border-[#bcdbca]">
+                  <span class="text-3xl font-black text-[#1b3b2b] block">${item.eco_score || 95} / 100</span>
+                  <span class="text-[10px] text-[#2d5a40] font-bold uppercase tracking-wider">Eco Score</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-[#fcfbf7] p-3.5 rounded-xl border border-[#e8e5de]">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Material</span>
+                  <span class="font-bold text-slate-800 text-xs">${item.material || 'Organic Bamboo'}</span>
+                </div>
+                <div class="bg-[#fcfbf7] p-3.5 rounded-xl border border-[#e8e5de]">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Reusable</span>
+                  <span class="font-bold text-emerald-700 text-xs">${item.reusable || 'Yes'}</span>
+                </div>
+                <div class="bg-[#fcfbf7] p-3.5 rounded-xl border border-[#e8e5de]">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Packaging</span>
+                  <span class="font-bold text-slate-800 text-xs">${item.packaging || 'Recyclable'}</span>
+                </div>
+                <div class="bg-[#fcfbf7] p-3.5 rounded-xl border border-[#e8e5de]">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Plastic Reduction</span>
+                  <span class="font-bold text-emerald-700 text-xs">${item.plastic_reduction || '~2.5 kg/year'}</span>
+                </div>
+              </div>
+
+              <div class="bg-[#eef4f0] p-4 rounded-xl border border-[#bcdbca]">
+                <span class="text-[10px] font-bold uppercase text-[#2d5a40] block mb-1">Sustainability Description</span>
+                <p class="text-xs text-slate-700 font-medium leading-relaxed">${item.sustainability_description || item.description}</p>
+              </div>
+
+              <div class="flex justify-between items-center pt-2">
+                <span class="text-xl font-extrabold text-[#1b3b2b]">৳${(item.price || 0).toLocaleString()}</span>
+                <a href="/product-details.html?id=${item.id}" class="btn-primary text-xs py-2.5 px-5">View Product Details →</a>
+              </div>
+            `;
+          };
+
+          // Render initial card for first product
+          renderShowcaseCard(products[0].id);
+        }
+
+        // Render Featured Products Grid
+        const featuredGrid = document.getElementById('featured-grid');
+        if (featuredGrid && products.length > 0) {
+          featuredGrid.innerHTML = products.slice(0, 4).map(p => `
+            <div class="eco-card overflow-hidden flex flex-col group">
+              <div class="relative aspect-square overflow-hidden bg-slate-100">
+                <a href="/product-details.html?id=${p.id}">
+                  <img src="${p.image_url}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </a>
+                <div class="absolute top-3 left-3">
+                  <span class="badge-eco-score">🌱 ${p.eco_score || 95} Eco Score</span>
+                </div>
+                <button onclick="window.ecoWishlist?.toggle(${p.id}, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-grow">
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">${p.category || 'Sustainable'}</span>
+                <a href="/product-details.html?id=${p.id}">
+                  <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">${p.name}</h3>
+                </a>
+                <div class="mt-auto pt-3 flex items-center justify-between border-t border-slate-100">
+                  <span class="text-lg font-extrabold text-[#1b3b2b]">৳${(p.price || 0).toLocaleString()}</span>
+                  <button onclick="window.ecoCart.add(${p.id}, 1)" class="btn-primary text-xs py-2 px-3">
+                    + Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+      });
+    </script>
+  </body>
+</html>

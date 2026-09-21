@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Saved Wishlist — EcoMart</title>
+    <meta name="description" content="View and manage your saved sustainable items and move them to cart anytime." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  #f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- Sticky Header Navigation -->
+    <nav class="header-glass sticky top-0 z-50 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center shadow-md group-hover:bg-[#1b3b2b] transition">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-[#3a7253]">Mart</span></span>
+              <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase leading-none">Shop Better. Live Greener.</p>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <a href="/" class="hover:text-[#2d5a40] transition">Home</a>
+            <a href="/products.html" class="hover:text-[#2d5a40] transition">Shop Catalog</a>
+            <a href="/wishlist.html" class="text-[#2d5a40] font-extrabold border-b-2 border-[#2d5a40] pb-1">Wishlist</a>
+            <a href="/orders.html" class="hover:text-[#2d5a40] transition">My Orders</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div id="nav-auth-container" class="flex items-center gap-2">
+              <a href="/login.html" class="text-slate-700 hover:text-[#2d5a40] font-bold text-xs uppercase tracking-wider px-3 py-2 transition">Login</a>
+              <a href="/register.html" class="btn-primary py-2 px-4 text-xs">Sign Up</a>
+            </div>
+
+            <a href="/checkout.html" class="relative btn-primary py-2 px-3.5 bg-[#1b3b2b] flex items-center gap-2">
+              <span class="font-bold text-xs uppercase">Cart</span>
+              <span id="cart-badge" class="bg-emerald-500 text-slate-950 text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full ml-0.5">0</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wishlist View -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+      
+      <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 class="text-3xl font-extrabold text-[#1b3b2b] tracking-tight">Your Saved Wishlist</h1>
+          <p class="text-sm text-slate-600 mt-1">Keep track of your favorite certified eco products and move them to cart anytime.</p>
+        </div>
+        <a href="/products.html" class="btn-secondary text-xs py-2.5 px-4">+ Explore Catalog</a>
+      </div>
+
+      <div id="wishlist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Dynamically rendered via Wishlist engine -->
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 EcoMart. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/wishlist.js"></script>
+    <script src="/frontend/js/nav-auth.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        renderWishlistPage();
+      });
+
+      function renderWishlistPage() {
+        const grid = document.getElementById('wishlist-grid');
+        if (!grid) return;
+
+        const ids = window.ecoWishlist?.get() || [];
+        if (ids.length === 0) {
+          grid.innerHTML = `
+            <div class="col-span-full eco-card p-12 text-center bg-white">
+              <div class="w-14 h-14 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                ❤️
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-1">Your wishlist is empty</h3>
+              <p class="text-xs text-slate-500 max-w-sm mx-auto mb-6">Browse our sustainable catalog and tap the heart icon on any product to save it here.</p>
+              <a href="/products.html" class="btn-primary inline-flex text-xs py-2.5 px-6">Explore Products</a>
+            </div>
+          `;
+          return;
+        }
+
+        const fallbackMap = window.ecoCart?.fallbackProductMap || {};
+        grid.innerHTML = ids.map(id => {
+          const item = fallbackMap[id] || {
+            name: `Sustainable Product #${id}`,
+            price: 850,
+            image_url: '/images/products/product-1.jpg'
+          };
+          return `
+            <div class="eco-card overflow-hidden flex flex-col group">
+              <div class="relative aspect-square overflow-hidden bg-slate-100">
+                <a href="/product-details.html?id=${id}">
+                  <img src="${item.image_url}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </a>
+                <button onclick="removeFromWishlistPage(${id})" class="btn-icon active absolute top-3 right-3 shadow-md" title="Remove from wishlist">
+                  &times;
+                </button>
+              </div>
+              <div class="p-5 flex flex-col flex-grow">
+                <a href="/product-details.html?id=${id}">
+                  <h3 class="font-bold text-slate-900 text-base line-clamp-1 group-hover:text-[#2d5a40] transition">${item.name}</h3>
+                </a>
+                <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+                  <span class="text-lg font-extrabold text-[#1b3b2b]">৳${(item.price || 0).toLocaleString()}</span>
+                  <button onclick="window.ecoCart.add(${id}, 1); removeFromWishlistPage(${id});" class="btn-primary text-xs py-2 px-3">
+                    Move to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function removeFromWishlistPage(id) {
+        window.ecoWishlist?.toggle(id);
+        renderWishlistPage();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Sustainable Products Catalog — EcoMart</title>
+    <meta name="description" content="Browse certified plastic-free products with transparent lifecycle scores and carbon-neutral shipping across Bangladesh." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  #f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- Sticky Header Navigation -->
+    <nav class="header-glass sticky top-0 z-50 border-b border-[#e8e5de]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center shadow-md group-hover:bg-[#1b3b2b] transition">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-[#3a7253]">Mart</span></span>
+              <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase leading-none">Shop Better. Live Greener.</p>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <a href="/" class="hover:text-[#2d5a40] transition">Home</a>
+            <a href="/products.html" class="text-[#2d5a40] font-extrabold border-b-2 border-[#2d5a40] pb-1">Shop Catalog</a>
+            <a href="/wishlist.html" class="hover:text-[#2d5a40] transition">Wishlist</a>
+            <a href="/orders.html" class="hover:text-[#2d5a40] transition">My Orders</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="/wishlist.html" class="p-2 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition relative" title="Saved Wishlist">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span class="wishlist-badge absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-extrabold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+            </a>
+
+            <div id="nav-auth-container" class="flex items-center gap-2">
+              <a href="/login.html" class="text-slate-700 hover:text-[#2d5a40] font-bold text-xs uppercase tracking-wider px-3 py-2 transition">Login</a>
+              <a href="/register.html" class="btn-primary py-2 px-4 text-xs">Sign Up</a>
+            </div>
+
+            <a href="/checkout.html" class="relative btn-primary py-2 px-3.5 bg-[#1b3b2b] hover:bg-[#112419] flex items-center gap-2" title="Shopping Cart">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <span class="hidden sm:inline font-bold text-xs uppercase">Cart</span>
+              <span id="cart-badge" class="bg-emerald-500 text-slate-950 text-[11px] font-black w-5 h-5 flex items-center justify-center rounded-full ml-0.5">0</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Catalog View -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+      
+      <!-- Catalog Header Banner -->
+      <div class="eco-card p-8 mb-8 bg-white border border-[#e8e5de]">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="badge-eco-score">🌱 100% Certified Plastic-Free</span>
+              <span id="results-count" class="text-xs text-slate-500 font-bold">Showing 16 products</span>
+            </div>
+            <h1 class="text-3xl font-extrabold text-[#1b3b2b] tracking-tight">Sustainable Products Catalog</h1>
+            <p class="text-sm text-slate-600 mt-1">Every item is plastic-free certified with verified lifecycle impact scores.</p>
+          </div>
+
+          <!-- Search Input Bar -->
+          <div class="w-full md:w-80">
+            <div class="relative">
+              <input type="text" id="search-input" placeholder="Search catalog by name..." class="w-full bg-[#fcfbf7] border border-[#e8e5de] rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a40]">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs Bar -->
+        <div class="flex flex-wrap items-center gap-2 mt-6 pt-6 border-t border-slate-100">
+          <button data-cat="all" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-[#2d5a40] text-white border border-[#1b3b2b]">
+            All Items
+          </button>
+          <button data-cat="kitchen" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-white text-slate-700 border border-slate-200 hover:bg-[#eef4f0]">
+            🥗 Kitchen & Dining
+          </button>
+          <button data-cat="personal-care" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-white text-slate-700 border border-slate-200 hover:bg-[#eef4f0]">
+            🌿 Personal Care
+          </button>
+          <button data-cat="living" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-white text-slate-700 border border-slate-200 hover:bg-[#eef4f0]">
+            🏡 Home & Living
+          </button>
+          <button data-cat="solar" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-white text-slate-700 border border-slate-200 hover:bg-[#eef4f0]">
+            ☀️ Solar & Energy
+          </button>
+          <button data-cat="fashion" class="cat-filter-btn px-4 py-2 rounded-lg text-xs font-bold transition bg-white text-slate-700 border border-slate-200 hover:bg-[#eef4f0]">
+            👜 Accessories & Apparel
+          </button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Product 1 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="bamboo utensil set" data-category="kitchen">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=1" class="block w-full h-full">
+              <img src="/images/products/product-1.jpg" alt="Bamboo Utensil Set" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 95 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(1, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Kitchen & Dining</span>
+            <a href="/product-details.html?id=1">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Bamboo Utensil Set</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Handcrafted travel cutlery set with organic cotton pouch. 100% biodegradable bamboo.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳850</span>
+              <button onclick="window.ecoCart.add(1, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="solar power bank" data-category="solar">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=2" class="block w-full h-full">
+              <img src="/images/products/product-2.jpg" alt="Solar Power Bank" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 92 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(2, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Solar & Energy</span>
+            <a href="/product-details.html?id=2">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Solar Power Bank</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">High-capacity 10,000mAh solar charging power bank with rugged shockproof casing.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳2,400</span>
+              <button onclick="window.ecoCart.add(2, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="recycled glass bottle" data-category="living">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=3" class="block w-full h-full">
+              <img src="/images/products/product-3.jpg" alt="Recycled Glass Bottle" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 97 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(3, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Home & Living</span>
+            <a href="/product-details.html?id=3">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Recycled Glass Bottle</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">750ml durable bottle crafted from 100% post-consumer recycled glass with cork lid.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳550</span>
+              <button onclick="window.ecoCart.add(3, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="organic hemp tote" data-category="fashion">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=4" class="block w-full h-full">
+              <img src="/images/products/product-4.jpg" alt="Organic Hemp Tote" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 94 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(4, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Accessories</span>
+            <a href="/product-details.html?id=4">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Organic Hemp Tote</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Heavy-duty organic raw hemp shoulder tote bag with reinforced handles.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳650</span>
+              <button onclick="window.ecoCart.add(4, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Product Cards 5 through 16 -->
+        <!-- Product 5 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="compostable phone case" data-category="fashion">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=5" class="block w-full h-full">
+              <img src="/images/products/product-5.jpg" alt="Compostable Phone Case" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 93 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(5, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Accessories</span>
+            <a href="/product-details.html?id=5">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Compostable Phone Case</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Made from flax straw & plant biopolymers. 100% home compostable.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳900</span>
+              <button onclick="window.ecoCart.add(5, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="beeswax food wraps" data-category="kitchen">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=6" class="block w-full h-full">
+              <img src="/images/products/product-6.jpg" alt="Beeswax Food Wraps" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 96 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(6, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Kitchen & Dining</span>
+            <a href="/product-details.html?id=6">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Beeswax Food Wraps</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Organic cotton infused with natural beeswax & jojoba oil. Reusable food seal.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳1,200</span>
+              <button onclick="window.ecoCart.add(6, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="biodegradable bamboo toothbrush" data-category="personal-care">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=9" class="block w-full h-full">
+              <img src="/images/products/product-9.jpg" alt="Bamboo Toothbrush" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 98 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(9, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Personal Care</span>
+            <a href="/product-details.html?id=9">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Bamboo Toothbrush (4-Pack)</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Charcoal-infused BPA-free bristles with compostable organic bamboo handles.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳420</span>
+              <button onclick="window.ecoCart.add(9, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="eco-card overflow-hidden flex flex-col group product-card" data-name="portable solar camping lantern" data-category="solar">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <a href="/product-details.html?id=12" class="block w-full h-full">
+              <img src="/images/products/product-12.jpg" alt="Solar Camping Lantern" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </a>
+            <div class="absolute top-3 left-3">
+              <span class="badge-eco-score">🌱 95 Eco Score</span>
+            </div>
+            <button onclick="window.ecoWishlist?.toggle(12, this)" class="btn-icon absolute top-3 right-3 shadow-md" title="Add to wishlist">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Solar & Energy</span>
+            <a href="/product-details.html?id=12">
+              <h3 class="font-bold text-slate-900 text-base mt-1 line-clamp-1 group-hover:text-[#2d5a40] transition">Portable Solar Camping Lantern</h3>
+            </a>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">Inflatable waterproof LED lantern powered by high-efficiency solar panel.</p>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
+              <span class="text-lg font-extrabold text-[#1b3b2b]">৳1,950</span>
+              <button onclick="window.ecoCart.add(12, 1)" class="btn-primary text-xs py-2 px-3">
+                + Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 EcoMart. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/wishlist.js"></script>
+    <script src="/frontend/js/search.js"></script>
+    <script src="/frontend/js/nav-auth.js"></script>
+  </body>
+</html>

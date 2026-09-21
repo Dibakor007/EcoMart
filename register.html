@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account — EcoMart</title>
+    <meta name="description" content="Create your EcoMart account to start earning carbon offset rewards on certified plastic-free products." />
+    
+    <!-- Google Fonts & Style Engine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                900: '#112419',
+                800: '#1b3b2b',
+                700: '#254d37',
+                600: '#2d5a40',
+                500: '#3a7253',
+                400: '#4a8b67',
+                100: '#eef4f0',
+                50:  #f5f9f6',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+  </head>
+  <body class="bg-[#fcfbf7] text-[#18221c] min-h-screen flex flex-col justify-between font-sans antialiased">
+
+    <!-- Minimal Header -->
+    <header class="py-6 px-8 flex justify-between items-center max-w-7xl mx-auto w-full">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-[#2d5a40] text-white flex items-center justify-center font-bold shadow-md">
+          🌱
+        </div>
+        <span class="font-extrabold text-2xl tracking-tight text-[#1b3b2b]">Eco<span class="text-[#3a7253]">Mart</span></span>
+      </a>
+      <a href="/login.html" class="text-xs font-bold text-[#2d5a40] hover:underline">Already registered? Sign In →</a>
+    </header>
+
+    <!-- Register Centered Card -->
+    <main class="w-full max-w-md mx-auto px-4 py-8">
+      <div class="eco-card p-8 bg-white border border-[#e8e5de] shadow-lg">
+        
+        <div class="text-center mb-8">
+          <span class="badge-eco-score mb-2">🌱 Join 10,000+ Green Shoppers</span>
+          <h1 class="text-2xl font-extrabold text-[#1b3b2b] tracking-tight">Create Your Account</h1>
+          <p class="text-xs text-slate-500 mt-1">Start tracking carbon offsets and earning eco reward points.</p>
+        </div>
+
+        <form id="register-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Full Name:</label>
+            <input type="text" id="name" required placeholder="e.g. Tanvir Ahmed" class="w-full bg-[#fcfbf7] border border-[#e8e5de] rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a40]">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Email Address:</label>
+            <input type="email" id="email" required placeholder="user@ecomart.org" class="w-full bg-[#fcfbf7] border border-[#e8e5de] rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a40]">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Password:</label>
+            <input type="password" id="password" required placeholder="At least 6 characters..." class="w-full bg-[#fcfbf7] border border-[#e8e5de] rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d5a40]">
+          </div>
+
+          <div id="error-message" class="hidden text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-200"></div>
+
+          <button type="submit" class="btn-primary w-full py-3 text-sm shadow-md">
+            Create Eco Account →
+          </button>
+        </form>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-xs text-slate-400">
+      <p>&copy; 2026 EcoMart. Shop Better. Live Greener.</p>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="/frontend/js/cart.js"></script>
+    <script src="/frontend/js/auth.js"></script>
+  </body>
+</html>
