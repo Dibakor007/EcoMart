@@ -6,9 +6,9 @@
 [![Express](https://img.shields.io/badge/Express-4.21-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Gemini AI](https://img.shields.io/badge/Google_Gemini-AI_Powered-8E75FF?logo=google&logoColor=white)](https://ai.google.dev/)
 
-**EcoMart** is a full-stack, eco-conscious e-commerce web platform designed to promote sustainable shopping. It features real-time carbon footprint estimations, AI-driven sustainability insights powered by Google Gemini, full shopping cart and order management, and an administrative suite.
+
+**EcoMart** is a full-stack, eco-conscious e-commerce web platform designed to promote sustainable shopping. It features real-time carbon footprint estimations, full shopping cart and order management and an administrative suite.
 
 ---
 
